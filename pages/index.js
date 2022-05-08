@@ -21,14 +21,11 @@ function App() {
   let videolength = 0;
   let watchLength = 0;
 
-  let dataImage = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnPgogICAgICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iYmxhY2siPjwvcmVjdD4KICAgICAgPHRleHQgeD0iMTgiIHk9IjE1MCIgZm9udC1mYW1pbHk9IlBvcHBpbnMiIGZvbnQtd2VpZ2h0PSJib2xkIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSI+WW91IGhhdmUgc3VjY2Vzc2Z1bGx5IHdhdGNoZWQgdGhlPC90ZXh0PgogICAgICA8dGV4dCB4PSIxOCIgeT0iMTgwIiBmb250LWZhbWlseT0iUG9wcGlucyIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIj52aWRlbzo8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjE4IiB5PSIyMTAiIGZvbnQtZmFtaWx5PSJQb3BwaW5zIiBmb250LXdlaWdodD0iYm9sZCIgZm9udC1zaXplPSIyNCIgZmlsbD0id2hpdGUiPjMwIFNlY29uZCBFeHBsYWluZXIgVmlkZW9zPC90ZXh0Pjx0ZXh0IHg9IjE4IiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJQb3BwaW5zIiBmb250LXdlaWdodD0iYm9sZCIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiPlVSTDogIGh0dHBzOi8veW91dHViZS5jb20vd2F0Y2g/dj1KelBmTWJHMXZyRTwvdGV4dD48dGV4dCB4PSIxOCIgeT0iMzMwIiBmb250LWZhbWlseT0iUG9wcGlucyIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIj5NaW50ZXIgQWRkcmVzczogMHg1YjIwMmM5M2NmOWQwZDY3NjYzYjAzNGI4ZTIyOTAxMTNiYzNmY2EwPC90ZXh0Pjx0ZXh0IHg9IjE4IiB5PSIzNjAiIGZvbnQtZmFtaWx5PSJQb3BwaW5zIiBmb250LXdlaWdodD0iYm9sZCIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiPlRpbWVzdGFtcDogNy1NYXktMjAyMiAyMjo1NDo0NzwvdGV4dD48L2c+PC9zdmc+"
-
-
   useEffect(() => {
     const fetchAssets = async () => {
       const res = await axios.get(`https://deep-index.moralis.io/api/v2/${address}/nft?chain=mumbai&format=decimal`, {
         headers: {
-          'X-API-KEY': "SlV7s7iM7tIZrFOGZjYSzSKkPMXPq8LhJJebNt1Id4wnI3E5PeOpIKjG3JwOak1S"
+          'X-API-KEY': process.env.NEXT_PUBLIC_MORALIS_API_KEY
         }
       })
       const data = res.data
@@ -96,7 +93,7 @@ function App() {
     if(address) {
       // const rpcURL = "https://rpc-mumbai.maticvigil.com"
       const rpcURL = process.env.NEXT_PUBLIC_RPC_URL
-      console.log(process.env.NEXT_PUBLIC_RPC_URL)
+      // console.log(process.env.NEXT_PUBLIC_RPC_URL)
       // // const rpcURL = "rinkeby"
       // const wallet = new ethers.Wallet(
       //   "a7195145c9c028ecec588a63e1f7086362a31c9d6653b97402d9f584cb541df9",
@@ -183,7 +180,7 @@ function App() {
       videoId: videoURL,
       playerVars: {
         playsinline: 1,
-        origin: 'http://localhost:3000',
+        origin: 'https://pov-deveshb15.vercel.app',
       },
       events: {
         onReady: onPlayerReady,
